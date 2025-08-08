@@ -19,20 +19,9 @@ class OTPView: UIView {
         return stackView
     }()
     
-    let textFields: [UITextField] = (0..<6).map { _ in
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.textAlignment = .center
+    let textFields: [BackspaceTextField] = (0..<6).map { _ in
+        let tf = BackspaceTextField()
         tf.keyboardType = .numberPad
-        tf.textColor = .black
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.layer.cornerRadius = 8
-        tf.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        NSLayoutConstraint.activate([
-            tf.widthAnchor.constraint(equalToConstant: 45),
-            tf.heightAnchor.constraint(equalToConstant: 55)
-        ])
         return tf
     }
     
@@ -67,6 +56,8 @@ class OTPView: UIView {
         NSLayoutConstraint.activate([
             textFieldStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             textFieldStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             nextButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             nextButton.centerXAnchor.constraint(equalTo: centerXAnchor),
